@@ -1,0 +1,3 @@
+[submodule "autoliv_util"]
+	path = autoliv_util
+	url = https://Autoliv@dev.azure.com/Autoliv/otc-engineering-product_reliability/_git/autoliv_util
