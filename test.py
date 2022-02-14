@@ -9,22 +9,31 @@ import tempfile
 print(tempfile.gettempdir())
 pytesseract.pytesseract.tesseract_cmd = r'autoliv_util\tesseract_x64-windows\tools\tesseract\tesseract.exe'
 
-save_path = r"C:\Temp\MLCT\tesla_mlct2_test"
+save_path = r"C:\Temp\MLCT\tesla_mlct2_test\6558541 ML AMB"
 part_number = '6558541'
-num_days = 4
-temperature = 'Hot'
+num_days = 300
+temperature = 'AMB'
 facility = 'AOA'
-frames = np.arange(0, 40, 5)
+frames = [16, 17, 18, 19, 20, 21, 22, 23]
 reposition = True
 resize = False
 fill = None
 subtract = True
-orientations = ['front', 'side']
+orientations = ['side']
+scale = 1
+location = (500, 600)
 
-# all_videos = Analysis.analyze_from_uts(save_path, part_number=part_number,
-#                                        time_delta=num_days, temperature=temperature,
-#                                        orientations=orientations, frames=frames,
-#                                        reposition=reposition, subtract=True)
+# all_videos = Analysis.preprocess_from_uts(save_path, part_number=part_number,
+#                                           time_delta=num_days, temperature=temperature,
+#                                           orientations=orientations, frames=frames,
+#                                           reposition=reposition, subtract=True, locations=[location])
+videos_path = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\videos\side"
+temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\side"
+templates_path = r"C:\Temp\MLCT\tesla_mlct2_test\6558541 ML AMB\templates\side"
+
+_, params = Analysis.preprocess_from_video_folder(videos_path, temp_dir, frames,
+                                                  templates_path, 'AOA', location=location, subtract=True, scale=1)
+print(params)
 # folder = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\videos\front"
 # temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\front"
 # templates = r"C:\Temp\MLCT\tesla_mlct2_test\front\templates"
@@ -57,11 +66,11 @@ orientations = ['front', 'side']
 # Analysis.batch_track_cushion_analysis(processed_path, save_folder)
 # Analysis.batch_mse_analysis(average_images, processed_path, save_folder)
 
-processed_path = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\front\processed_images"
-save_folder = r"C:\Temp\MLCT\tesla_mlct2_test\6397522_Hot\processed_videos"
-# Analysis.batch_track_cushion_analysis(processed_path, save_folder)
-videos_path = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\videos\front"
-temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis"
-templates_folder = r"C:\Temp\MLCT\tesla_mlct2_test\6397522_Hot\templates\front"
-frames = np.arange(0, 61, 1)
-videos = Analysis.preprocess_from_video_folder(videos_path, temp_dir, frames, templates_folder, 'AOA')
+# processed_path = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\front\processed_images"
+# save_folder = r"C:\Temp\MLCT\tesla_mlct2_test\6397522_Hot\processed_videos"
+# # Analysis.batch_track_cushion_analysis(processed_path, save_folder)
+# videos_path = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\videos\front"
+# temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis"
+# templates_folder = r"C:\Temp\MLCT\tesla_mlct2_test\6397522_Hot\templates\front"
+# frames = np.arange(0, 61, 1)
+# videos = Analysis.preprocess_from_video_folder(videos_path, temp_dir, frames, templates_folder, 'AOA')
