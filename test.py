@@ -32,7 +32,7 @@ temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\side"
 templates_path = r"C:\Temp\MLCT\tesla_mlct2_test\6558541 ML AMB\templates\side"
 
 _, params = Analysis.preprocess_from_video_folder(videos_path, temp_dir, frames,
-                                                  templates_path, 'AOA', location=location, subtract=True, scale=1)
+                                                  templates_path, 'AOA', reposition_params=location, subtract=True, scale=1)
 print(params)
 # folder = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\videos\front"
 # temp_dir = r"C:\Users\zachary.preator\AppData\Local\Temp\temp_analysis\front"
